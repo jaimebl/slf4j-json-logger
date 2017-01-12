@@ -178,6 +178,17 @@ public abstract class AbstractJsonLogger implements JsonLogger {
   }
 
   @Override
+  public JsonLogger throwable(String key, Throwable throwable) {
+    try {
+      jsonObject.add(key, gson.toJsonTree(formatException(throwable)));
+    }
+    catch (Exception e) {
+      jsonObject.add(key, gson.toJsonTree(formatException(e)));
+    }
+    return this;
+  }
+
+  @Override
   public JsonLogger stack() {
     try {
       jsonObject.add("stacktrace", gson.toJsonTree(formatStack()));
@@ -241,8 +252,8 @@ public abstract class AbstractJsonLogger implements JsonLogger {
     return formatter.format(System.currentTimeMillis());
   }
 
-  private String formatException(Exception e) {
-    return ExceptionUtils.getStackTrace(e);
+  private String formatException(Throwable t) {
+    return ExceptionUtils.getStackTrace(t);
   }
 
     public boolean isIncludeThreadName() {

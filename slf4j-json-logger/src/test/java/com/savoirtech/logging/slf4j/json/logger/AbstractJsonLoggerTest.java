@@ -145,6 +145,12 @@ public class AbstractJsonLoggerTest {
   }
 
   @Test
+  public void throwable() {
+    logger.throwable("myThrowable", new NoClassDefFoundError("Something worse")).log();
+    assert (logMessage.contains("\"myThrowable\":\"java.lang.NoClassDefFoundError: Something worse"));
+  }
+
+  @Test
   public void MDC() {
     MDC.put("myMDC", "someValue");
     logger.message("message").log();

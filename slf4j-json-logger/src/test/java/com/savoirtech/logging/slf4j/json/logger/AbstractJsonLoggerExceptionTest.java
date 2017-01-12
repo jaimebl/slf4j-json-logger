@@ -133,6 +133,12 @@ public class AbstractJsonLoggerExceptionTest {
   }
 
   @Test
+  public void throwable() {
+    logger.throwable("throwable", new Throwable("x-exc-x")).log();
+    assert(logMessage.contains("\"throwable\":\"java.lang.RuntimeException: x-rt-exc-x"));
+  }
+
+  @Test
   public void stack() {
     logger.stack().log();
     assert(logMessage.contains("\"stacktrace\":\"java.lang.RuntimeException: x-rt-exc-x"));

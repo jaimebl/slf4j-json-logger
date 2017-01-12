@@ -94,6 +94,9 @@ public class JsonLoggerMockFactoryTest {
     // exception
     assertSame(jsonLogger, jsonLogger.exception("x-exc-x", new Exception()));
 
+    // throwable
+    assertSame(jsonLogger, jsonLogger.throwable("x-exc-x", new Throwable()));
+
     // field
     assertSame(jsonLogger, jsonLogger.field("x-field-name-x", "x-field-value-x"));
     assertSame(jsonLogger, jsonLogger.field("x-field-name-x", () -> "x-field-value-x"));

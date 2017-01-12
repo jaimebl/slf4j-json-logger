@@ -110,6 +110,11 @@ public class NoopLoggerTest {
   }
 
   @Test
+  public void testThrowable() {
+    this.logger.throwable("x-map-key-x", new NoClassDefFoundError("Class Missing"));
+  }
+
+  @Test
   public void testLog() throws Exception {
     this.logger.log();
   }

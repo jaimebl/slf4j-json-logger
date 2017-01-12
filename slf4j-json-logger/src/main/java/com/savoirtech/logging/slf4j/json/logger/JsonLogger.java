@@ -85,9 +85,15 @@ public interface JsonLogger {
   JsonLogger exception(String key, Exception exception);
 
   /**
+   * Add a throwable to the JSON hierarchy. The throwable will be formatted to include the message and the stacktrace
+   * similar to how it is outputted using throwable.printStackTrace()
+   */
+  JsonLogger throwable(String key, Throwable throwable);
+
+  /**
    * Get the toggle state if the thread name is included in the message
    */
-  boolean isIncludeThreadName(); 
+  boolean isIncludeThreadName();
 
   /**
    * Set the toggle state if the thread name is included in the message
@@ -96,15 +102,15 @@ public interface JsonLogger {
 
   /**
    * Get the toggle state if the class name is included in the message
-   */  
+   */
   boolean isIncludeClassName() ;
 
   /**
    * Set the toggle state if the class name is included in the message
    */
   void setIncludeClassName(boolean includeClassName) ;
-    
-    
+
+
   /**
    * Include the stack dump of the current running thread in the log output.
    * This data will be included in the output under the "stacktrace" key

@@ -49,6 +49,7 @@ public class BasicLoggingTest {
     logger.warn().message("It works!").log();
     logger.error().message("It works!").log();
     logger.info().exception("myKey", new RuntimeException("blah")).log();
+    logger.info().throwable("myThrowable", new NoClassDefFoundError("ouch")).log();
   }
 
   @Test

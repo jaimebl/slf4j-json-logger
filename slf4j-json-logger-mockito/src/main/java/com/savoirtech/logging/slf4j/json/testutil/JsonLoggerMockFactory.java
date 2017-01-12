@@ -41,6 +41,8 @@ public class JsonLoggerMockFactory {
 
     Mockito.when(result.exception(Mockito.anyString(), Mockito.any(Exception.class)))
         .thenReturn(result);
+    Mockito.when(result.throwable(Mockito.anyString(), Mockito.any(Throwable.class)))
+        .thenReturn(result);
     Mockito.when(result.field(Mockito.anyString(), Mockito.anyString())).thenReturn(result);
     Mockito.when(result.field(Mockito.anyString(), Mockito.any(Supplier.class))).thenReturn(result);
     Mockito.when(result.json(Mockito.anyString(), Mockito.any(JsonElement.class)))
